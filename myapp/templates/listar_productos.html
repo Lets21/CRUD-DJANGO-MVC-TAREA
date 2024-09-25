@@ -1,0 +1,13 @@
+<h2>Lista de Productos</h2>
+<ul>
+    {% for producto in productos %}
+    <li>
+        {{ producto.nombre }} - {{ producto.precio }} - {{ producto.descripcion }}
+        <a href="{% url 'editar_producto' producto.id %}">Editar</a> <!-- Botón de editar -->
+        <a href="{% url 'eliminar_producto' producto.id %}">Eliminar</a> <!-- Botón de eliminar -->
+    </li>
+    {% empty %}
+    <li>No hay productos disponibles.</li>
+    {% endfor %}
+</ul>
+
