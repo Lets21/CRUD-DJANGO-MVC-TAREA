@@ -1,8 +1,16 @@
-<h2>Crear Producto</h2>
-<form method="post">
+{% extends 'base.html' %}
+
+{% block title %}Crear Producto{% endblock %}
+
+{% block content %}
+<h2 class="text-center my-4">Crear Producto</h2>
+<form method="post" class="mx-auto" style="max-width: 500px;">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 
-<a href="{% url 'inicio' %}">Volver a Inicio</a> <!-- Enlace para volver a la página principal -->
+<div class="text-center mt-3">
+    <a href="{% url 'inicio' %}" class="btn btn-link">Volver a Inicio</a>
+</div>
+{% endblock %}
