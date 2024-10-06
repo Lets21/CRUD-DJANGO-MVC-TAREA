@@ -132,6 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
+LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
+
+
 
 
 # Default primary key field type
