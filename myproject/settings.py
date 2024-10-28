@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = ['crudjango-b822d17ca103.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 
