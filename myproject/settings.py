@@ -90,10 +90,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://u8frh4vp8eugot:p9a2dba6c852f873907ad8474253fbd274acf8e5720261bbd0d143f8ba45d60a8@ec2-23-23-68-170.compute-1.amazonaws.com:5432/defig0jqoj09ok'
-    )
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+
 
 # Optimiza la configuración de la base de datos
 DATABASES['default']['CONN_MAX_AGE'] = 500
@@ -134,11 +133,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# Configuración de archivos estáticos
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals(), staticfiles=False)
+
+# Django-Heroku settings
+django_heroku.settings(locals(), databases=False, staticfiles=False)
+
 
 
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
