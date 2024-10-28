@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 from pathlib import Path
 import dj_database_url
-import django_heroku
 import os
 
 
@@ -90,7 +89,8 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://u8frh4vp8eugot:p9a2dba6c852f873907ad8474253fbd274acf8e5720261bbd0d143f8ba45d60a8@ec2-23-23-68-170.compute-1.amazonaws.com:5432/defig0jqoj09ok'
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
     )
 }
 
@@ -133,10 +133,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
+
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
 
@@ -150,8 +150,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if os.getenv('RENDER'):
     DEBUG = False
-
-django_heroku.settings(locals())
 
 # Añade estas configuraciones
 CACHES = {
