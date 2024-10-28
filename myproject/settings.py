@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import dj_database_url
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,8 @@ SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['crudjango-b822d17ca103.herokuapp.com', '127.0.0.1']
+
 
 
 
@@ -86,7 +89,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': dj_database_url.config(
+        default='postgres://u8frh4vp8eugot:p9a2dba6c852f873907ad8474253fbd274acf8e5720261bbd0d143f8ba45d60a8@ec2-23-23-68-170.compute-1.amazonaws.com:5432/defig0jqoj09ok'
+    )
 }
 
 
@@ -126,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
 
