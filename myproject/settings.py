@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1']
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -134,9 +135,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
-django_heroku.settings(locals())
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals(), staticfiles=False)
+
 
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
