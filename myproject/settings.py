@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import dj_database_url
 from pathlib import Path
+import dj_database_url
+import django_heroku
 import os
 
 
@@ -131,7 +132,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'stacticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'stacticfiles'),)
+django_heroku.settings(locals())
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
 
@@ -145,3 +148,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if os.getenv('RENDER'):
     DEBUG = False
+
+django_heroku.settings(locals())
