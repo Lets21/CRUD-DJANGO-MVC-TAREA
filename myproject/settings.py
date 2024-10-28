@@ -26,10 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = False
 
-
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['prgamerslets-1ef8402e0d07.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 
@@ -95,6 +94,9 @@ DATABASES = {
     )
 }
 
+# Optimiza la configuración de la base de datos
+DATABASES['default']['CONN_MAX_AGE'] = 500
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 
 # Password validation
@@ -132,8 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'stacticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'stacticfiles'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 django_heroku.settings(locals())
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
@@ -150,3 +152,11 @@ if os.getenv('RENDER'):
     DEBUG = False
 
 django_heroku.settings(locals())
+
+# Añade estas configuraciones
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
