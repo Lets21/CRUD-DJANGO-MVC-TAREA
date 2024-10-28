@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['prgamerslets-1ef8402e0d07.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -88,8 +88,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
+        default='postgres://u8frh4vp8eugot:p9a2dba6c852f873907ad8474253fbd274acf8e5720261bbd0d143f8ba45d60a8@ec2-23-23-68-170.compute-1.amazonaws.com:5432/defig0jqoj09ok'
     )
 }
 
