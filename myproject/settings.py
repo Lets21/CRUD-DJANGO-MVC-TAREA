@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = 'True'
 
 
 
@@ -156,23 +156,3 @@ CACHES = {
 ALLOWED_HOSTS = ['web-production-28a3.up.railway.app', 'localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-28a3.up.railway.app']
-
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',
-    },
-    'django': {
-        'handlers': ['console'],
-        'level': 'INFO',  # Cambia a DEBUG si necesitas más detalles
-    },
-}
-
