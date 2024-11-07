@@ -90,13 +90,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lets',  # Nombre de la base de datos que creaste
+        'USER': 'sa',            # Usuario que creaste
+        'PASSWORD': '210403Leo.',            # Contraseña del usuario
+        'HOST': 'localhost',                    # Deja localhost para base de datos local
+        'PORT': '5432',                         # Puerto por defecto de PostgreSQL
+    }
 }
-
-
-# Optimiza la configuración de la base de datos
-DATABASES['default']['CONN_MAX_AGE'] = 500
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
 
 
 # Password validation
