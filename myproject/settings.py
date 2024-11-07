@@ -158,21 +158,3 @@ ALLOWED_HOSTS = ['web-production-28a3.up.railway.app', 'localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://web-production-28a3.up.railway.app']
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',
-    },
-    'django': {
-        'handlers': ['console'],
-        'level': 'INFO',  # Cambia a DEBUG si necesitas más detalles
-    },
-}
-
