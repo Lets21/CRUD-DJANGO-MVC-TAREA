@@ -160,6 +160,7 @@ CACHES = {
 
 ALLOWED_HOSTS = ['web-production-28a3.up.railway.app', 'localhost', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['http: //*', 'https://web-production-28a3.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-28a3.up.railway.app']
+
 
 
