@@ -157,3 +157,5 @@ CACHES = {
         'LOCATION': 'unique-snowflake',
     }
 }
+
+ALLOWED_HOST = ['localhost ',  'web-production-28a3.up.railway.app']
