@@ -158,4 +158,5 @@ CACHES = {
     }
 }
 
-ALLOWED_HOST = ['localhost ',  'web-production-28a3.up.railway.app']
+ALLOWED_HOSTS = ['web-production-28a3.up.railway.app', 'localhost', '127.0.0.1']
+
