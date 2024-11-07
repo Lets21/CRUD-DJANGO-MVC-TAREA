@@ -29,12 +29,6 @@ SECRET_KEY = 'django-insecure-&+7&=50n6nff!5$+=utsml_(x%3lvk+$i9315bq$f!@hn+l8bn
 DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1']
 
 
-ALLOWED_HOSTS = ['*']
-
-
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -135,16 +129,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
 # Configuración de archivos estáticos
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Django-Heroku settings
-django_heroku.settings(locals(), databases=False, staticfiles=False)
-
-
 
 LOGIN_REDIRECT_URL = 'inicio'  # O cualquier otra vista a la que desees redirigir tras el login
 LOGOUT_REDIRECT_URL = 'login'  # Redirige al login tras cerrar sesión
